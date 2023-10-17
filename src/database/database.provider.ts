@@ -8,11 +8,11 @@ export const databaseProviders = [
       const config = knex({
         client: 'pg',
         connection: {
-          host: 'localhost',
-          port: 5433,
-          user: 'postgres',
-          password: 'pass123',
-          database: 'knex-objection',
+          host: process.env.HOST,
+          port: +process.env.DB_PORT,
+          user: process.env.DB_USER,
+          password: process.env.DB_PASSWORD,
+          database: process.env.DB_NAME,
         },
         migrations: {
           directory: './src/database/migrations',
