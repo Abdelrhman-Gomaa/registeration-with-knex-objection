@@ -4,13 +4,15 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { KnexModule } from 'nestjs-knex';
 import { ConfigModule } from '@nestjs/config';
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [
+    PostModule,
+    UserModule,
     ConfigModule.forRoot({
       envFilePath: '.env',
     }),
-    UserModule,
     KnexModule.forRootAsync({
       useFactory: () => ({
         config: {
